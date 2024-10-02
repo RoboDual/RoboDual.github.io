@@ -281,7 +281,7 @@
 
             <h2 class="subtitle is-3" style="text-align: center;">Success Rates of Real-World Experiments</h2>
             <p>
-              To provide a comprehensive evaluation of the effectiveness of different pre-trained encoders, we design two distinct scenarios with varying levels of complexity. The first scenario consists of ten diverse manipulation tasks in a clean background. These tasks require fundamental manipulation skills such as Pick & Place, articulated object manipulation, etc. In addition, we construct a more challenging kitchen environment that incorporates various interfering objects and backgrounds relevant to the target tasks. In this environment, we present five tasks: 1) taking the spatula off the shelf, 2) putting the pot into the sink, 3) putting the banana into the drawer, 4) lifting the lid, and 5) closing the drawer. As shown in Fig. 3(a), the complexity of these scenarios necessitates the visual encoder to possess both the “how-to-interact” and “where-to-interact” abilities to effectively handle these tasks.
+              All real-world experiments are conducted with an AIRBOT Play robotic arm featuring a 7-DoF action space and a third-view RGB camera. We evaluate different policies on both single-instruction tasks ("Lift the Pod Lid", "Pour Shrimp into Bowl", and "Push the Block Left") and multi-instruction tasks ("Put [object] into Basket" and Knock [object] Over").
             </p>
             <div align="center">
               <img src="resources/robodual/real_world_exp_page.png" alt="Image description" width="100%">
@@ -315,7 +315,7 @@
             </div>
             <tr>
               <td>
-                <h2 class="subtitle is-4" style="text-align: center;">Task 1: Put [obj] into the basket </h2>
+                <h2 class="subtitle is-4" style="text-align: center;">Task 1: Put [object] into the basket </h2>
                 <div class="row">
                   <div class="col">
                     <video class="center" playsinline autoplay loop muted src="./resources/robodual/visuomotor/mul-1/b2-new.mp4" width="100%" style="border-radius:10px;"></video>
@@ -350,7 +350,7 @@
                     <!-- <br> -->
                   </div>
                 </div>
-                <h2 class="subtitle is-4" style="text-align: center;">Task 2: Knock the [obj] over</h2>
+                <h2 class="subtitle is-4" style="text-align: center;">Task 2: Knock the [object] over</h2>
                 <div class="row">
                   <div class="col">
                     <video class="center" playsinline autoplay loop muted src="./resources/robodual/visuomotor/mul-2/bear-new.mp4" width="100%" style="border-radius:10px;"></video>
@@ -376,7 +376,7 @@
               </td>
             </tr>
 
-            <h3 class="subtitle is-3" style="text-align: center;">Generalization Experiment Setting</h3>
+            <h3 class="subtitle is-2" style="text-align: center;">Generalization Experiment Setting</h3>
             <div align="center">
               <img src="resources/robodual/generalization/gen_setting_page.png" alt="Image description" width="100%">
             </div>
@@ -389,8 +389,7 @@
     </div>
   </section>
 
-  <section class="hero is-light">
-    <div class="hero-body">
+  <section class="section body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-full-width">
@@ -401,7 +400,7 @@
           <div class="content has-text-justified">
             <tr>
               <td>
-                <h2 class="subtitle is-4" style="text-align: center;">Put block into bowl</h2>
+                <h2 class="subtitle is-4" style="text-align: center;">Position Variation</h2>
                 <div class="row">
                   <div class="col">
                     <video class="center" playsinline autoplay loop muted src="./resources/robodual/generalization/put_block/regrasp-2.mp4" width="100%" style="border-radius:10px;"></video>
@@ -426,7 +425,7 @@
                 </div>
 
                 
-                <h2 class="subtitle is-4" style="text-align: center;">Open the drawer</h2>
+                <h2 class="subtitle is-4" style="text-align: center;">Visual Distractor</h2>
                 <div class="row">
                   <div class="col">
                     <center><video class="center" playsinline autoplay loop muted src="./resources/robodual/generalization/open_drawer/20240919-184951.mp4" width="70%" style="border-radius:10px;"></video></center>
@@ -441,7 +440,7 @@
                 </div>
 
 
-                <h2 class="subtitle is-4" style="text-align: center;">Push block left</h2>
+                <h2 class="subtitle is-4" style="text-align: center;">Unseen Background</h2>
                 <div class="row">
                   <div class="col">
                     <center><video class="center" playsinline autoplay loop muted src="./resources/robodual/generalization/push_block/20241001-183400.mp4" width="70%" style="border-radius:10px;"></video></center>
@@ -456,7 +455,7 @@
                 </div>
 
 
-                <h2 class="subtitle is-4" style="text-align: center;">Put [obj] into plate</h2>
+                <h2 class="subtitle is-4" style="text-align: center;">Novel Object</h2>
                 <div class="row">
                   <div class="col">
                     <center><video class="center" playsinline autoplay loop muted src="./resources/robodual/generalization/novel_object/put_banana.mp4" width="70%" style="border-radius:10px;"></video></center>
@@ -479,20 +478,18 @@
         </div>
       </div>
     </div>
-    </div>
   </section>
 
 
-  <section class="hero is-light">
-    <div class="hero-body">
+  <section class="section body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-full-width">
           <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Inference Efficiency Comparison with OpenVLA</h1>
-          <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
           <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths ">
           <div class="content has-text-justified">
+            <p>Robodual achieves a control frequency of <strong>15 Hz</strong> in our real-world setup using NVIDIA A5000 Ada GPUs, facilitating deployment in more dexterous tasks. Notably, inference latency is a primary factor contributing to the performance degradation of OpenVLA. Operating at only <strong>3.9 Hz</strong> within our system, it significantly alters the system dynamics compared to the 20 Hz non-blocking controller used in our real-world tasks.</p>
             <tr>
               <td>
                 <h2 class="subtitle is-4" style="text-align: center;">Put banana into the basket</h2>
@@ -512,15 +509,14 @@
         </div>
       </div>
     </div>
-    </div>
   </section>
 
-  <section class="section body">
+  <section class="hero is-light">
+    <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-full-width">
           <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Simulation Evaluations on CALVIN</h1>
-          <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
           <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths ">
           <div class="content has-text-justified">
@@ -530,12 +526,32 @@
               Additionally, we further investigate the robustness to free-form task instructions of various methods. We incorporate RoboFlamingo and LCB, both of which also utilize LLMs (MPT-1B and LLaVA-7B respectively), as our baseline approaches. All methods are trained exclusively on the ABC split using the original language annotations and are evaluated with GPT-4 enriched ones. While the performance of baseline methods decreases significantly compared to their results in default setting, our method exhibits minimal impact and nearly doubles the average length compared to LCB. This improvement can be attributed to both the semantic understanding capability of the generalist and the specialist model's robustness to variations in conditioning latents.
             </p>
 
-            <div align="center">
-              <h1 class="title is-4" style="text-align: center; padding-bottom: 10px;">Language-conditioned visuomotor control on CALVIN ABC→D</h1>
-              <img src="resources/robodual/simulation/calvin_result.png" alt="Image description" width="100%">
-              <h1 class="title is-4" style="text-align: center; padding-bottom: 10px;">Robustness to free-form language instructions</h1>
-              <img src="resources/robodual/simulation/calvin_gen_result.png" alt="Image description" width="60%">
-            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="section body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths ">
+          <div class="content has-text-justified">
+            <tr>
+              <td>
+                <div align="center">
+                  <h1 class="title is-4" style="text-align: center; padding-bottom: 10px;">Language-conditioned visuomotor control on CALVIN ABC→D</h1>
+                  <img src="resources/robodual/simulation/calvin_result.png" alt="Image description" width="80%">
+                  <h1 class="title is-4" style="text-align: center; padding-bottom: 10px;">Robustness to free-form language instructions</h1>
+                  <img src="resources/robodual/simulation/calvin_gen_result.png" alt="Image description" width="50%">
+                </div>
+              </td>
+            </tr>
           </div>
           </div>
           </div>
@@ -543,8 +559,6 @@
       </div>
     </div>
   </section>
-
-
   
 
 <footer class="footer">
